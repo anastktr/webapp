@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shop</title>
+    <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script src="main.js"></script>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #dbcece;
+        }
+
+        nav {
+            background-color: #4e0ba5;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #2b035a;
+        }
+
+
+        .ad {
+            border: 1px solid #ccc;
+            background-color: #ffffff;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .ad h2 {
+            color: #4e4b4b;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .ad p {
+            color: #555;
+            text-align: center;
+
+        }
+
+        .ad img {
+            width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+
+        .ad p.price {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        #favorite-ads-container {
+            max-width: 800px;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a id="index" href="index.html">Αρχική Σελίδα</a>
+    </nav>
+
+
+    <div id="favorite-ads-container"></div>
+
+    <script id="favorite-ads-template" type="text/x-handlebars-template">
+        {{#each ad}}
+        <div class="ad">
+            <h2>{{t}}</h2>
+            <p>{{d}}</p>
+            <img src="{{i}}" alt="{{t}}">
+            <p>Τιμή: {{c}}€ </p>
+        </div>
+        {{/each}}
+    </script>
+</body>
+</html>

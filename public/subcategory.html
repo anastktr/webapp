@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="el">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Online Shop</title>
+        <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+        <script src="main.js"></script>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #dbcece;
+            }
+
+            #ad-container {
+                max-width: 800px;
+                margin: 20px auto;
+            }
+
+            h2, p{
+                text-align: center;
+            }
+
+            .ad {
+                margin-top: 60px;
+                margin-left: 10px;
+                margin-right: 10px;
+                border: 1px solid #ccc;
+                background-color: #fff;
+                
+                padding: 15px;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .ad .photos{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+            }
+
+            .ad .photos img{
+
+                width: 400px;
+                height: 400px;
+
+            }
+            .ad h2 {
+                color: #333;
+            }
+
+            .ad p {
+                color: #555;
+            }
+
+            
+
+            .ad table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 15px;
+            }
+
+            .ad th, .ad td {
+                border: 1px solid #ccc;
+                padding: 8px;
+                text-align: left;
+            }
+
+            .ad th {
+                background-color: #f2f2f2;
+                font-weight: bold;
+            }
+
+            .ad td {
+                background-color: #fff;
+            }
+
+            nav {
+                background-color: #4e0ba5;
+                padding: 10px 0;
+                text-align: center;
+            }
+
+            nav a {
+                text-decoration: none;
+                color: #fff;
+                font-weight: bold;
+                padding: 10px 20px;
+                margin: 0 10px;
+                border-radius: 5px;
+            }
+
+            nav a:hover {
+                background-color: #2b035a;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <nav>
+            <a id="index" href="index.html">Αρχική Σελίδα</a>
+        </nav>
+
+        <div id="subcategory-ads-container"></div>
+
+        <script id="subcategory-ad-template" type="text/x-handlebars-template">
+            {{#each ads}}
+                <div class="ad">
+                    <h2>{{title}}</h2>
+                    <p>{{description}}</p>
+                    <p>Price: {{cost}}€</p>
+                    <div class="photos">
+                        {{#each images}}
+                            <img src="{{this}}" alt="Ad Photo">
+                        {{/each}}
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Features</th>
+                        </tr>
+                        {{#each features}}
+                            <tr>
+                                <th>{{this.[0]}}</th>
+                                <td>{{this.[1]}}</td>
+                            </tr>
+                        {{/each}}
+                    </table>
+                </div>
+            {{/each}}
+        </script>
+    </body>
+</html>

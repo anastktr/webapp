@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="el">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Online Shop</title>
+        <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+        <script src="main.js"></script>
+        <link rel="stylesheet" href="categ.css">
+
+    </head>
+
+    <body>
+
+        <nav>
+            <a id="index" href="index.html">Αρχική Σελίδα</a>
+            <a id="favoriteAdsLink" href="favorite-ads.html?username={{username}}&sessionId={{sessionId}}">Αγαπημένες Αγγελίες</a>
+        </nav>
+        
+
+
+        <div id="login-form-container">
+            <h3>Login</h3>
+            <form id="loginForm">
+                <label for="username">Username: </label>
+                <input type="text" id="username" name="username" required> <br>
+
+                <label for="password">Password: </label>
+                <input type="password" id="password" name="password" required> <br>
+
+                <button type="button" onclick="login()">Login</button>
+
+            </form>
+        </div>
+
+        <p id="success-message" style="display: none;">Επιτυχής Σύνδεση!</p>
+        <p id="add-to-favorites-message" class="success-message" style="display: none;"></p>
+        <p id="already-to-favorites-message" class="unsuccess-message" style="display: none;"></p>
+
+        <div id="category-ads-container"></div>
+
+        <script id="category-ads-template" type="text/x-handlebars-template" style="margin-top: 30px;">
+            {{#each ads}}
+                <div class="ad">
+                    <h2>{{title}}</h2>
+                    <p>{{{description}}}</p>
+                    <img src="{{images.[0]}}" alt="{{title}}">
+                    <p>Τιμή: {{cost}}€ </p>
+                    
+                    <button onclick="addToFavorites('{{id}}', '{{title}}', '{{cost}}', '{{images.[0]}}', '{{description}}')">Προσθήκη</button>
+                </div>
+            {{/each}}
+        </script>
+
+
+    </body>
+</html>

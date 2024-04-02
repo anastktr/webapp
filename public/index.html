@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="el">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+        <script src="main.js"></script>
+
+        <title>Online Shop</title>
+        <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
+
+        <style>
+            
+            body{
+                font-family: Arial, sans-serif;
+                margin:0;
+                padding:0;
+                background-color: #dbcece;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                
+            }
+
+            #categories-container {
+                max-width: 800px;
+                display: flex;
+                flex-direction: row;
+                margin-top: 50px;
+                
+                
+            }
+
+            .category{
+                border: 1px solid #ccc;
+                background-color: #f4f1f5;
+                margin: 10px;
+                padding: 15px;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0,1);
+                width: calc(33.33% - 20px); 
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            h2 {
+                color: #333232;
+            }
+
+            img {
+                width: 100px;
+                height: 100px;
+            }
+
+            a{
+                text-decoration: none;
+                color: #502c52;
+                font-weight: bold;
+                display: block;
+                margin-top: 10px;
+            }
+
+            a:hover{
+                color: rgb(177, 26, 207);
+            }
+
+            ul {
+                list-style-type: none;
+                padding: 0;
+                margin-top: 10px;
+                margin-bottom: 50px;
+            }
+
+            li {
+                margin-bottom: 5px;
+            }
+
+            
+        </style>
+    </head>
+
+    <body>
+        <div id="categories-container"></div>
+
+        <script id="categories-template" type="text/x-handlebars-template"> 
+            {{#each categories}}
+                <div class="category">
+                    <h2>{{title}}</h2>
+                    <a href="category.html?id={{id}}">
+                        <img src="{{img_url}}" alt="{{title}}">
+                    </a>
+                    
+                    <ul>
+                        {{#each subcategories}}
+                            <li><a href="subcategory.html?id={{id}}">{{title}}</a></li>
+                        {{/each}}
+                    </ul>
+                </div>
+            {{/each}}
+        </script>
+    </body>
+</html>
